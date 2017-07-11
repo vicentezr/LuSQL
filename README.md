@@ -1,3 +1,4 @@
+
 # LuSQL
 -------------------------
 INSTRUCCIONES DE TRABAJO:
@@ -20,6 +21,7 @@ será la última puesta en el readme que tengas tu (a lo mejor trabajaste sobre 
 versión más antigua, por eso hay que indicarlo).
 
 -Sis obligaciones de tiempo y cuando quieras puedes dejarlo.
+
 -------------------------
 
 *****
