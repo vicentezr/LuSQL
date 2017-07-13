@@ -39,5 +39,28 @@ MODIFICACIONES: Puesta la documentación de readme.
 *****
 NÚMERO: 3
 FECHA: 13/07/2017
-MODIFICACIONES: Añadida estructura de clases básica de la parte lógica
+MODIFICACIONES: Añadida estructura de clases básica de la parte lógica.
+
+- Nuevo paquete "LuSQL.logica"
+>Nuevas clases (3): 
+		*ConexionSingleton
+		*ServidorSQL
+		*TipoBD (enumeration)
+    
+- Nuevo paquete "LuSQL.logica.Factorias"
+>Nuevas clases (1):
+		*Conexiones
+    
+- Nuevo paquete "LuSQL.logica.Interfaces"
+>Nuevas clases (2):
+		*AlmacenServidores
+		*ConexionBD
+
+- Nuevo paquete "LuSQL.logica.Modelos"
+>Nuevas clases (4):
+		*BaseDeDatos
+		*Tabla
+		*Columna
+		*Fila
+   
 *****
