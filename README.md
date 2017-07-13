@@ -35,3 +35,9 @@ NÚMERO: 2
 FECHA: 10/07/2017
 MODIFICACIONES: Puesta la documentación de readme.
 *****
+
+*****
+NÚMERO: 3
+FECHA: 13/07/2017
+MODIFICACIONES: Añadida estructura de clases básica de la parte lógica
+*****
