@@ -6,10 +6,10 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class Comun {
+public class Iniciar {
 
     public static void main(String[] args) {
-        //Comun.initMessage();
+        Iniciar.initMessage();
         new Consola();
     }
 
@@ -33,7 +33,7 @@ public class Comun {
                 + "al final de los comentarios); esto significa que las consultas pueden\n"
                 + "hacerse partidas en varias lineas (los saltos de linea serán equivalentes\n"
                 + "a dejar un espacio en blanco.\n\n\n"
-                + "LuSQL v1.5   AUTOR: Vicente Zapatero Román   COMPILACIÓN Nº: 2\n"
+                + "LuSQL v1.5   COMPILACIÓN Nº: 2\n"
                 + "FECHA: 08/05/2017 ESTADO DE DESARROYO: En proceso\n\n\n"
                 + "¡¡¡ATENCIÓN!!!; VERSIÓN EN PRUEBAS E INCOMPLETA, NO SE GARANTIZA EL CORRECTO\n"
                 + "FUNCIONAMIENTO Y PUEDE CONTENER GRAN CANTIDAD DE BUGS."
@@ -45,7 +45,7 @@ public class Comun {
     }
 
     public static void desplegarCreditos() {
-        JOptionPane.showMessageDialog(null, "AUTOR: Vicente Zapatero Román\nCOMPILACIÓN: 2  FECHA: 08/05/2017",
+        JOptionPane.showMessageDialog(null, "COMPILACIÓN: 2  FECHA: 08/05/2017",
                 "Créditos", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -53,7 +53,6 @@ public class Comun {
         JOptionPane.showMessageDialog(null, "Esta es una version con funcionalidad reducida o baja\n "
                 + "y sin ninguna garantía de buen funcionamiento. Simplemente es de\n "
                 + "prueba y tampoco se garantiza que la ayuda estea adecuada a la\n"
-                + "realidad.\n\n "
-                + "COMPILACIÓN: 2   FECHA: 08/05/2017   AUTOR: Vicente Zapatero Román", "Importante", JOptionPane.WARNING_MESSAGE);
+                + "realidad. ", "Importante LuSQL v1.5", JOptionPane.WARNING_MESSAGE);
     }
 }

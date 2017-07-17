@@ -7,6 +7,8 @@ package LuSQL;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,7 +49,11 @@ public class Conector extends javax.swing.JFrame {
         contrasena = new javax.swing.JPasswordField();
         borrarCampos = new javax.swing.JButton();
         conectarWindows = new javax.swing.JButton();
+        carga = new javax.swing.JProgressBar();
+        cargando = new javax.swing.JLabel();
         menuBarra = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        menuConectarWindows = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         ayuda = new javax.swing.JMenuItem();
         creditos = new javax.swing.JMenuItem();
@@ -60,17 +66,22 @@ public class Conector extends javax.swing.JFrame {
         setTitle("LuSQL v1.5 (ventana de conexión)");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(80, 253, 188));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Tipo de base de datos:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Ruta de la base de datos:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Usuario:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Contraseña:");
 
         siguiente.setBackground(new java.awt.Color(215, 253, 244));
+        siguiente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         siguiente.setText("Siguiente");
         siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +93,7 @@ public class Conector extends javax.swing.JFrame {
 
         usuario.setBackground(new java.awt.Color(190, 253, 220));
 
+        tipo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mysql", "sqlserver" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +104,7 @@ public class Conector extends javax.swing.JFrame {
         contrasena.setBackground(new java.awt.Color(190, 253, 220));
 
         borrarCampos.setBackground(new java.awt.Color(215, 253, 244));
+        borrarCampos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         borrarCampos.setText("Borrar campos");
         borrarCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +113,7 @@ public class Conector extends javax.swing.JFrame {
         });
 
         conectarWindows.setBackground(new java.awt.Color(215, 253, 244));
+        conectarWindows.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         conectarWindows.setText("Conectar con el usuario actual de Windows");
         conectarWindows.setEnabled(false);
         conectarWindows.addActionListener(new java.awt.event.ActionListener() {
@@ -108,14 +122,21 @@ public class Conector extends javax.swing.JFrame {
             }
         });
 
+        cargando.setForeground(new java.awt.Color(51, 51, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(conectarWindows)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(borrarCampos))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -125,38 +146,33 @@ public class Conector extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(cargando, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(conectarWindows))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(borrarCampos)
-                        .addGap(31, 31, 31))))
+                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 70, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(conectarWindows)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(borrarCampos)))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(conectarWindows)
+                    .addComponent(borrarCampos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -169,10 +185,31 @@ public class Conector extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cargando, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jMenu2.setText("Opciones");
+
+        menuConectarWindows.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+        menuConectarWindows.setText("Conectar con el usuario actual de Windows");
+        menuConectarWindows.setEnabled(false);
+        menuConectarWindows.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConectarWindowsActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuConectarWindows);
+
+        menuBarra.add(jMenu2);
 
         jMenu1.setText("Ayuda y créditos");
 
@@ -213,32 +250,40 @@ public class Conector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        Comun.desplegarAyuda();
+        Iniciar.desplegarAyuda();
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void creditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosActionPerformed
-        Comun.desplegarCreditos();
+        Iniciar.desplegarCreditos();
     }//GEN-LAST:event_creditosActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-        try {
-            if (direccion.equals("")) {
-                JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (usuario.equals("")) {
-                JOptionPane.showMessageDialog(null, "Se debe especificar un usuario.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (contrasena.equals("")) {
-                JOptionPane.showMessageDialog(null, "Se debe especificar una contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                System.out.println("jdbc:" + tipo + ":" + direccion + " | " + usuario + " | " + contrasena);
-                System.out.println(usuario);
-                conexion = DriverManager.getConnection("jdbc:" + tipo.getSelectedItem().toString() + "://" + direccion.getText(), usuario.getText(), contrasena.getText());
-                new Consola(conexion, direccion.getText(), tipo.getSelectedItem().toString(), usuario.getText());
-                this.dispose();
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión con la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
+                  
+       
+        
+//        try {
+//            c.setP(50);
+
+////            this.setVisible(false);
+////            if (direccion.equals("")) {
+////                JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
+////            } else if (usuario.equals("")) {
+////                JOptionPane.showMessageDialog(null, "Se debe especificar un usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+////            } else if (contrasena.equals("")) {
+////                JOptionPane.showMessageDialog(null, "Se debe especificar una contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
+////            } else {
+////                System.out.println("jdbc:" + tipo + ":" + direccion + " | " + usuario + " | " + contrasena);
+////                System.out.println(usuario);
+////                conexion = DriverManager.getConnection("jdbc:" + tipo.getSelectedItem().toString() + "://" + direccion.getText(), usuario.getText(), contrasena.getText());
+////                new Consola(conexion, direccion.getText(), tipo.getSelectedItem().toString(), usuario.getText());
+////                this.dispose();
+//                c.dispose();
+//            }
+//        } catch (SQLException e) {
+//            c.dispose();
+//            JOptionPane.showMessageDialog(null, "Error de conexión con la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void borrarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarCamposActionPerformed
@@ -250,12 +295,22 @@ public class Conector extends javax.swing.JFrame {
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         if (tipo.getSelectedItem().toString().equals("sqlserver")) {
             conectarWindows.setEnabled(true);
+            menuConectarWindows.setEnabled(true);
         } else {
             conectarWindows.setEnabled(false);
+            menuConectarWindows.setEnabled(false);
         }
     }//GEN-LAST:event_tipoActionPerformed
 
     private void conectarWindowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarWindowsActionPerformed
+        conectarWindows();
+    }//GEN-LAST:event_conectarWindowsActionPerformed
+
+    private void menuConectarWindowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConectarWindowsActionPerformed
+        conectarWindows();
+    }//GEN-LAST:event_menuConectarWindowsActionPerformed
+
+    private void conectarWindows() {
         try {
             conexion = DriverManager.getConnection("jdbc:sqlserver://localhost;integratedSecurity=true");
             new Consola(conexion, direccion.getText(), "", "");
@@ -263,11 +318,13 @@ public class Conector extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_conectarWindowsActionPerformed
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JButton borrarCampos;
+    private javax.swing.JProgressBar carga;
+    private javax.swing.JLabel cargando;
     private javax.swing.JButton conectarWindows;
     private javax.swing.JPasswordField contrasena;
     private javax.swing.JMenuItem creditos;
@@ -277,10 +334,12 @@ public class Conector extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar menuBarra;
+    private javax.swing.JMenuItem menuConectarWindows;
     private javax.swing.JButton siguiente;
     private javax.swing.JComboBox<String> tipo;
     private javax.swing.JTextField usuario;

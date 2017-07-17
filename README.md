@@ -64,3 +64,15 @@ MODIFICACIONES: Añadida estructura de clases básica de la parte lógica.
 		*Fila
    
 *****
+NÚMERO: 4
+FECHA: 17/07/1017
+MODIFICACIONES: Cámbios en la interfaz gráfica.
+
+- Modificaciones en colores, formatos de letra y formatos de organización al mostrar la información.
+
+- Añadidas más funciones en las barras de menús y más atajos de teclado.
+
+- Añadida barra de progreso (A medias, falta parte lógica).
+
+NOTA: La modificación solo afecta al paquete principal de LuSQL y las funciones deben
+ser relizadas y enlazadas adecuadamente para su funcionamiento.

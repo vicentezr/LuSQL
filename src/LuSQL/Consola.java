@@ -55,16 +55,16 @@ public class Consola extends javax.swing.JFrame {
         tipo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        tablas = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        columnas = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         nuevaBase = new javax.swing.JMenuItem();
+        nuevaSinConexion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         consultaItem = new javax.swing.JMenuItem();
         borrarM = new javax.swing.JMenuItem();
@@ -76,15 +76,17 @@ public class Consola extends javax.swing.JFrame {
         setTitle("LuSQL v1.5 (consola de consultas)");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(80, 253, 188));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         area.setBackground(new java.awt.Color(1, 1, 1));
         area.setColumns(20);
+        area.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         area.setForeground(new java.awt.Color(21, 255, 79));
         area.setRows(5);
         jScrollPane1.setViewportView(area);
 
         BorrarTodo.setBackground(new java.awt.Color(215, 253, 244));
+        BorrarTodo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BorrarTodo.setText("Borrar todo");
         BorrarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +95,7 @@ public class Consola extends javax.swing.JFrame {
         });
 
         hacerConsulta.setBackground(new java.awt.Color(214, 149, 253));
+        hacerConsulta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         hacerConsulta.setText("Hacer consulta");
         hacerConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,13 +105,25 @@ public class Consola extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Conexión:");
 
+        estado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Usuario:");
 
+        usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Tipo BD:");
 
+        tipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Dirección:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,15 +167,19 @@ public class Consola extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jScrollPane2.setViewportView(jList1);
-
-        jScrollPane3.setViewportView(jList2);
-
-        jLabel7.setText("Bases de datos:");
-
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Tablas:");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Consola de consultas:");
+
+        tablas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Columnas de la tabla seleccionada:");
+
+        columnas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jScrollPane2.setViewportView(columnas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,15 +187,18 @@ public class Consola extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BorrarTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hacerConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(BorrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(hacerConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
@@ -196,20 +218,18 @@ public class Consola extends javax.swing.JFrame {
                         .addComponent(hacerConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 177, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
 
@@ -223,6 +243,15 @@ public class Consola extends javax.swing.JFrame {
             }
         });
         jMenu2.add(nuevaBase);
+
+        nuevaSinConexion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        nuevaSinConexion.setText("Trabajar con nueva ventana sin conexión");
+        nuevaSinConexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaSinConexionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(nuevaSinConexion);
 
         jMenuBar1.add(jMenu2);
 
@@ -293,11 +322,11 @@ public class Consola extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevaBaseActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        Comun.desplegarAyuda();
+        Iniciar.desplegarAyuda();
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void creditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosActionPerformed
-        Comun.desplegarCreditos();
+        Iniciar.desplegarCreditos();
     }//GEN-LAST:event_creditosActionPerformed
 
     private void BorrarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarTodoActionPerformed
@@ -316,6 +345,10 @@ public class Consola extends javax.swing.JFrame {
         initConsulta();
     }//GEN-LAST:event_consultaItemActionPerformed
 
+    private void nuevaSinConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaSinConexionActionPerformed
+        new Consola();
+    }//GEN-LAST:event_nuevaSinConexionActionPerformed
+
     private void initConsulta() {
         contador = 0;
         for (String actual : area.getText().replaceAll("\n", " ").split(";")) {
@@ -323,7 +356,7 @@ public class Consola extends javax.swing.JFrame {
             System.out.println(actual);
             switch (actual.charAt(0)) {
                 case '?':
-                    Comun.desplegarAyuda();
+                    Iniciar.desplegarAyuda();
                     break;
                 case '<':
                     consultaInput(actual);
@@ -396,6 +429,7 @@ public class Consola extends javax.swing.JFrame {
     private javax.swing.JTextArea area;
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JMenuItem borrarM;
+    private javax.swing.JList<String> columnas;
     private javax.swing.JMenuItem consultaItem;
     private javax.swing.JMenuItem creditos;
     private javax.swing.JLabel estado;
@@ -405,11 +439,9 @@ public class Consola extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -418,8 +450,9 @@ public class Consola extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JMenuItem nuevaBase;
+    private javax.swing.JMenuItem nuevaSinConexion;
+    private javax.swing.JComboBox<String> tablas;
     private javax.swing.JLabel tipo;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
