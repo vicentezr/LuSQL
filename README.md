@@ -68,10 +68,10 @@ NÚMERO: 5
 FECHA: 22/07/1017
 MODIFICACIONES: Modificación de la estructura lógica.
 
-	-Modificación y borrado de clases y paquetes de la parte lógica (Paquetes actuales: "logica" , "interfaces")
+-Modificación y borrado de clases y paquetes de la parte lógica (Paquetes actuales: "logica" , "interfaces")
 	
-	-Funcionamiento de gran parte de los métodos relacionados con la conexión a la base de datos SQL_Server
+-Funcionamiento de gran parte de los métodos relacionados con la conexión a la base de datos SQL_Server
 	
-	-Nuevas interfaces añadidas (BaseDatos,Tabla)
+-Nuevas interfaces añadidas (BaseDatos,Tabla)
 	
 
