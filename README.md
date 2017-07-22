@@ -41,28 +41,14 @@ NÚMERO: 3
 FECHA: 13/07/2017
 MODIFICACIONES: Añadida estructura de clases básica de la parte lógica.
 
-- Nuevo paquete "LuSQL.logica"
->Nuevas clases (3): 
-		*ConexionSingleton
-		*ServidorSQL
-		*TipoBD (enumeration)
-    
-- Nuevo paquete "LuSQL.logica.Factorias"
->Nuevas clases (1):
-		*Conexiones
-    
-- Nuevo paquete "LuSQL.logica.Interfaces"
->Nuevas clases (2):
-		*AlmacenServidores
-		*ConexionBD
+- Nuevo paquete "LuSQL.logica" (Nuevas clases:ConexionSingleton,ServidorSQL,TipoBD (enumeration))
 
-- Nuevo paquete "LuSQL.logica.Modelos"
->Nuevas clases (4):
-		*BaseDeDatos
-		*Tabla
-		*Columna
-		*Fila
-   
+- Nuevo paquete "LuSQL.logica.Factorias" (Nuevas clases: Conexiones)
+
+- Nuevo paquete "LuSQL.logica.Interfaces" (Nuevas clases,AlmacenServidores,ConexionBD)
+
+- Nuevo paquete "LuSQL.logica.Modelos" (Nuevas clases:BaseDeDatos,Tabla,Columna,Fila)
+
 *****
 NÚMERO: 4
 FECHA: 17/07/1017
@@ -76,3 +62,16 @@ MODIFICACIONES: Cámbios en la interfaz gráfica.
 
 NOTA: La modificación solo afecta al paquete principal de LuSQL y las funciones deben
 ser relizadas y enlazadas adecuadamente para su funcionamiento.
+
+*****
+NÚMERO: 5
+FECHA: 22/07/1017
+MODIFICACIONES: Modificación de la estructura lógica.
+
+	-Modificación y borrado de clases y paquetes de la parte lógica (Paquetes actuales: "logica" , "interfaces")
+	
+	-Funcionamiento de gran parte de los métodos relacionados con la conexión a la base de datos SQL_Server
+	
+	-Nuevas interfaces añadidas (BaseDatos,Tabla)
+	
+
