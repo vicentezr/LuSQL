@@ -75,7 +75,7 @@ MODIFICACIONES: Modificación de la estructura lógica.
 - Nuevas interfaces añadidas (BaseDatos,Tabla)
 
 *****
-NÚMERO: 5
+NÚMERO: 6
 FECHA: 24/07/2017
 MODIFICACIONES: Modificación en la interfaz gráfica y de comandos.
 
