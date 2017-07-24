@@ -73,5 +73,21 @@ MODIFICACIONES: Modificación de la estructura lógica.
 - Funcionamiento de gran parte de los métodos relacionados con la conexión a la base de datos SQL_Server
 	
 - Nuevas interfaces añadidas (BaseDatos,Tabla)
+
+*****
+NÚMERO: 5
+FECHA: 24/07/2017
+MODIFICACIONES: Modificación en la interfaz gráfica y de comandos.
+
+- Modificación de la organización del código.
+
+- Inicio del paquete comandos.
+
+- nueva ventana de ayuda.
+
+- Otras modificaciones menores.
+
+NOTA: Me haré cargo también del paquete de comandos (que será como una extensión de lógica de la interfaz
+gráfica). Los cambiós aún están incompletos y falta unir la interfaz gráfica con la parte lógica.
 	
 

@@ -1,5 +1,6 @@
-package LuSQL;
+package LuSQL.grafica;
 
+import LuSQL.comandos.Iniciar;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -322,7 +323,7 @@ public class Consola extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevaBaseActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        Iniciar.desplegarAyuda();
+        new Ayuda();
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void creditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosActionPerformed

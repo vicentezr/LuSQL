@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LuSQL;
+package LuSQL.grafica;
 
+import LuSQL.comandos.Iniciar;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -49,7 +50,6 @@ public class Conector extends javax.swing.JFrame {
         contrasena = new javax.swing.JPasswordField();
         borrarCampos = new javax.swing.JButton();
         conectarWindows = new javax.swing.JButton();
-        carga = new javax.swing.JProgressBar();
         cargando = new javax.swing.JLabel();
         menuBarra = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -131,7 +131,6 @@ public class Conector extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(conectarWindows)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,12 +188,11 @@ public class Conector extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                        .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cargando, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))))
         );
 
         jMenu2.setText("Opciones");
@@ -250,7 +248,7 @@ public class Conector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        Iniciar.desplegarAyuda();
+        new Ayuda();
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void creditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosActionPerformed
@@ -258,12 +256,10 @@ public class Conector extends javax.swing.JFrame {
     }//GEN-LAST:event_creditosActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-                  
-       
-        
+
+
 //        try {
 //            c.setP(50);
-
 ////            this.setVisible(false);
 ////            if (direccion.equals("")) {
 ////                JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -323,7 +319,6 @@ public class Conector extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ayuda;
     private javax.swing.JButton borrarCampos;
-    private javax.swing.JProgressBar carga;
     private javax.swing.JLabel cargando;
     private javax.swing.JButton conectarWindows;
     private javax.swing.JPasswordField contrasena;
