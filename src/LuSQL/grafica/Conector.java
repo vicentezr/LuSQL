@@ -256,7 +256,7 @@ public class Conector extends javax.swing.JFrame {
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
 
 
-        try {
+//        try {
             if (direccion.equals("")) {
                 JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (usuario.equals("")) {
@@ -270,10 +270,10 @@ public class Conector extends javax.swing.JFrame {
 //                new Consola(conexion, direccion.getText(), tipo.getSelectedItem().toString(), usuario.getText());
 //                this.dispose();
             }
-        } catch (SQLException e) {
+//        } catch (SQLException e) {
 //            JOptionPane.showMessageDialog(null, "Error de conexión con la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
 //            e.printStackTrace();
-        }
+//        }
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void borrarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarCamposActionPerformed
