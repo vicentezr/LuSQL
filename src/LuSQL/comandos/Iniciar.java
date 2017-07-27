@@ -12,11 +12,12 @@ public class Iniciar {
         try {
             switch (args[0]) {
                 case "-c":
+                    initMessage(false);
                     System.out.println("Función no disponible.");
                     break;
                 case "-ng":
                     initMessage(false);
-                    Consola_ng.menu();
+                    Consola_ng.init();
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             initMessage(true);

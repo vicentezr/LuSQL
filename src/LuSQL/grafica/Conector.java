@@ -8,8 +8,6 @@ package LuSQL.grafica;
 import LuSQL.comandos.Iniciar;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -258,28 +256,24 @@ public class Conector extends javax.swing.JFrame {
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
 
 
-//        try {
-//            c.setP(50);
-////            this.setVisible(false);
-////            if (direccion.equals("")) {
-////                JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
-////            } else if (usuario.equals("")) {
-////                JOptionPane.showMessageDialog(null, "Se debe especificar un usuario.", "Error", JOptionPane.ERROR_MESSAGE);
-////            } else if (contrasena.equals("")) {
-////                JOptionPane.showMessageDialog(null, "Se debe especificar una contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
-////            } else {
-////                System.out.println("jdbc:" + tipo + ":" + direccion + " | " + usuario + " | " + contrasena);
-////                System.out.println(usuario);
-////                conexion = DriverManager.getConnection("jdbc:" + tipo.getSelectedItem().toString() + "://" + direccion.getText(), usuario.getText(), contrasena.getText());
-////                new Consola(conexion, direccion.getText(), tipo.getSelectedItem().toString(), usuario.getText());
-////                this.dispose();
-//                c.dispose();
-//            }
-//        } catch (SQLException e) {
-//            c.dispose();
+        try {
+            if (direccion.equals("")) {
+                JOptionPane.showMessageDialog(null, "Se debe especificar una dirección.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (usuario.equals("")) {
+                JOptionPane.showMessageDialog(null, "Se debe especificar un usuario.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (contrasena.equals("")) {
+                JOptionPane.showMessageDialog(null, "Se debe especificar una contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+//                System.out.println("jdbc:" + tipo + ":" + direccion + " | " + usuario + " | " + contrasena);
+//                System.out.println(usuario);
+//                conexion = DriverManager.getConnection("jdbc:" + tipo.getSelectedItem().toString() + "://" + direccion.getText(), usuario.getText(), contrasena.getText());
+//                new Consola(conexion, direccion.getText(), tipo.getSelectedItem().toString(), usuario.getText());
+//                this.dispose();
+            }
+        } catch (SQLException e) {
 //            JOptionPane.showMessageDialog(null, "Error de conexión con la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
 //            e.printStackTrace();
-//        }
+        }
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void borrarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarCamposActionPerformed
@@ -307,13 +301,14 @@ public class Conector extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConectarWindowsActionPerformed
 
     private void conectarWindows() {
-        try {
-            conexion = DriverManager.getConnection("jdbc:sqlserver://localhost;integratedSecurity=true");
-            new Consola(conexion, direccion.getText(), "", "");
-            this.dispose();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        JOptionPane.showMessageDialog(null, "Funcion no disponible.");
+//        try {
+//            conexion = DriverManager.getConnection("jdbc:sqlserver://localhost;integratedSecurity=true");
+//            new Consola(conexion, direccion.getText(), "", "");
+//            this.dispose();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -75,7 +75,7 @@ MODIFICACIONES: Modificación de la estructura lógica.
 - Nuevas interfaces añadidas (BaseDatos,Tabla)
 
 *****
-NÚMERO: 5
+NÚMERO: 6
 FECHA: 24/07/2017
 MODIFICACIONES: Modificación en la interfaz gráfica y de comandos.
 
@@ -89,5 +89,14 @@ MODIFICACIONES: Modificación en la interfaz gráfica y de comandos.
 
 NOTA: Me haré cargo también del paquete de comandos (que será como una extensión de lógica de la interfaz
 gráfica). Los cambiós aún están incompletos y falta unir la interfaz gráfica con la parte lógica.
+
+*****
+NÚMERO: 7
+FECHA: 27/07/2017
+MODIFICACIONES: Modificación en paquete de comandos y otras menores en gráfica.
+
+- Ampliación de código en paquete de comandos
+
+- Otras modificaciones menores en parte gráfica.
 	
 
