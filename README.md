@@ -95,10 +95,10 @@ NÚMERO: 7
 FECHA: 28/07/2017
 MODIFICACIONES: Completada parte lógica de conexión y acceso.
 
--Completados los métodos de BaseDatos (ejecutarSentencia,ejecutarConsulta,crearNuevaTabla,eliminarTabla).
+- Completados los métodos de BaseDatos (ejecutarSentencia,ejecutarConsulta,crearNuevaTabla,eliminarTabla).
 
--Añadida documentación javadoc a los métodos.
+- Añadida documentación javadoc a los métodos.
 
--Añadidos nuevas propiedades en la clase "LuSQL.logica.Columna"
+- Añadidos nuevas propiedades en la clase "LuSQL.logica.Columna"
 
 Nota: Testeada la conexión y el funcionamiento de todos los métodos para un servidor SQL_Server_Windows, falta testear con el resto de servidores y detectar posibles errores.
