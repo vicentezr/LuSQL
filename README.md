@@ -90,4 +90,15 @@ MODIFICACIONES: Modificación en la interfaz gráfica y de comandos.
 NOTA: Me haré cargo también del paquete de comandos (que será como una extensión de lógica de la interfaz
 gráfica). Los cambiós aún están incompletos y falta unir la interfaz gráfica con la parte lógica.
 	
+*****
+NÚMERO: 7
+FECHA: 28/07/2017
+MODIFICACIONES: Completada parte lógica de conexión y acceso.
 
+-Completados los métodos de BaseDatos (ejecutarSentencia,ejecutarConsulta,crearNuevaTabla,eliminarTabla).
+
+-Añadida documentación javadoc a los métodos.
+
+-Añadidos nuevas propiedades en la clase "LuSQL.logica.Columna"
+
+Nota: Testeada la conexión y el funcionamiento de todos los métodos para un servidor SQL_Server_Windows, falta testear con el resto de servidores y detectar posibles errores.
