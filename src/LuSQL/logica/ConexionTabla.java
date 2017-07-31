@@ -3,6 +3,7 @@ package LuSQL.logica;
 import LuSQL.logica.Interfaces.BaseDatos;
 import LuSQL.logica.Interfaces.Tabla;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -13,17 +14,10 @@ import java.util.List;
  */
 public class ConexionTabla implements Tabla{
     
-    private BaseDatos bd;
-    //nombre de la tabla
-    private String nombre;    
-    //Array de objectos Columna, que contienen informacion de la columna de esta tabla
-    private Columna columnas[];
-    //Lista de valores de la tabla para cada una de las columnas
-    //cada fila supone un nuevo elemento en la lista
-    //cada columna supone un elemento del array String[]
-    private List<String[]> listValores;
-    //numero total de columnas de esta tabla
-    private int numColumnas;
+    private BaseDatos bd; 
+    private String nombre;       
+    private Columna columnas[]; 
+    private List<String[]> listValores;   
     
    /**    
     * @param bd
@@ -35,68 +29,76 @@ public class ConexionTabla implements Tabla{
     public ConexionTabla(BaseDatos bd,String nombre,boolean vacia) {
         this.bd=bd;
         this.nombre=nombre; 
-        this.listValores=new ArrayList();
+        this.listValores=new ArrayList();        
         if(!vacia){
             cargarDatos();
         }
     } 
     
     private void cargarDatos(){
-        cargarFilas();
-        if(numColumnas>0){
-            cargarColumnas(); 
-        }else{
-            this.columnas=new Columna[0];
-        }
-    }
-    
-    private void cargarFilas(){
         Statement statement;
         ResultSet rsFilas;
+        ResultSetMetaData rsColumnas;
         try {            
             statement=bd.getServidor().getConexion().createStatement();
             rsFilas=statement.executeQuery("SELECT * FROM "+this.nombre);
-            this.numColumnas=rsFilas.getMetaData().getColumnCount();
-            String valores[];
-            while(rsFilas.next()){
-                valores=new String[numColumnas];
-                for (int i = 0; i < valores.length; i++) {
-                    valores[i]=rsFilas.getString(i+1);                    
-                }
-                this.listValores.add(valores);                
-            }
+            rsColumnas=rsFilas.getMetaData();            
+            cargarColumnas(rsColumnas);
+            cargarFilas(rsFilas);           
             statement.close();
-            rsFilas.close();
+            rsFilas.close();           
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }finally{
             statement=null;
             rsFilas=null;
+        }  
+    } 
+    
+    private void cargarFilas(ResultSet rsFilas){
+        try {
+            String valores[];
+            while(rsFilas.next()){
+                valores=new String[totalColumnas()];
+                for (int i = 0; i < valores.length; i++) {
+                    valores[i]=rsFilas.getString(i+1);                    
+                }
+                this.listValores.add(valores);                
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getLocalizedMessage());
         }        
     }
     
-    private void cargarColumnas(){
-        ResultSet rsColumnas;
+    private void cargarColumnas(ResultSetMetaData rsColumnas){
         try {
-            rsColumnas=bd.getServidor().getConexion().getMetaData().getColumns(bd.getServidor().getBaseDeDatos(), null, this.nombre, null);
-            this.columnas=new Columna[this.numColumnas];
-            int contador=0;
-            while(rsColumnas.next()){
-                this.columnas[contador]=new Columna(rsColumnas.getString("COLUMN_NAME"),rsColumnas.getString(6));
-                contador++;
+            this.columnas=new Columna[rsColumnas.getColumnCount()];
+            for (int i = 0; i < columnas.length; i++) {
+                columnas[i]=new Columna(rsColumnas.getColumnName(i+1),rsColumnas.getColumnTypeName(i+1));                
             }
-            rsColumnas.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }finally{
-            rsColumnas=null;
+        } catch (Exception ex) {
+            this.columnas=new Columna[0];
         }
-    } 
+    }
 
     @Override
     public String getNombre() {
        return this.nombre;
     }
+
+    @Override
+    public int totalColumnas() {
+        if (this.columnas != null) {
+            return this.columnas.length;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int totalFilas() {
+        return this.listValores.size();
+    } 
 
     @Override
     public Columna[] getColumnas() {
@@ -112,6 +114,11 @@ public class ConexionTabla implements Tabla{
     public List<String[]> getListValores() {
         return this.listValores;
     }
+
+    @Override
+    public void setListValores(List<String[]> list) {
+       this.listValores=list;
+    }  
 
     @Override
     public Columna getColumna(int numColumna) {
@@ -229,7 +236,5 @@ public class ConexionTabla implements Tabla{
         }
         return array;
     }
-
-   
     
 }

@@ -1,41 +1,71 @@
 package LuSQL.logica.Interfaces;
+import LuSQL.logica.Columna;
 import LuSQL.logica.ServidorSQL;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Interface para el control de las bases de datos del servidorSQL 
- */
+ //Interface para el control de las bases de datos del servidorSQL 
 
 /**
- * Documentacion de uso:
- * El objecto de BaseDatos vayas a usar, tendra implementados estos metodos * 
- * Métodos inoperativos actualmente:
- *      -ejecutarSentencia
- *      -ejecutarConsulta
- *      -crearNuevaTabla
- *      -eliminarTabla * 
- * 
- * Algunos métodos devuelve un objecto Tabla, que nos permite acceder a mas métodos
- * +info sobre los objectos Tabla, en Interfaces->Tabla
+ * Los objectos BaseDatos, permiten realizar varias opciones en el {@link LuSQL.logica.ServidorSQL}
+ * al que estan conectados.<br/>
+ * BaseDatos, solo se obtiene a partir de un servidorSQL.
  */
 public interface BaseDatos { 
-  
-    //Devuelve los nombres de todas las tablas de la bd en una lista
+    /** 
+     * Obtener una lista con los nombres de las tablas existentes en la base de datos.
+     * @return List&lt;String&gt;
+     * @throws SQLException 
+     */
     List<String> obtenerNombreTablas() throws SQLException;
-    //Devuelve todas las tablas en forma de objectos Tabla en una lista
+    /**
+     * Obtener una lista con todas las tablas de la base de datos.
+     * @return List&lt;{@link LuSQL.logica.Interfaces.Tabla}&gt;
+     * @throws SQLException 
+     */
     List<Tabla> obtenerTablas() throws SQLException;
-    //Devuelve un objecto Tabla mediante un nombre que le pasemos como parametro
+    /**
+     * Obtener una tabla de la base de datos.
+     * @param tabla : String con el nombre de la tabla que buscas
+     * @return @see {@link LuSQL.logica.Interfaces.Tabla}
+     * @throws SQLException 
+     */
     Tabla obtenerTabla(String tabla) throws SQLException;
-    //Crea una nueva tabla en la base de datos, si le enviamos una como parametro
-    boolean crearNuevaTabla(Tabla tabla);
-    //Elimina una tabla con el nombre que le pasamos como parametro, si existe.
+    /**
+     * Crear una nueva tabla en la base de datos.
+     * @param nombreTabla
+     * @param c : Array de objectos Columna, que se asignaran a la tabla
+     * @return
+     * true: se creo la tabla correctamente; <br/>
+     * false: no se pudo crear la tabla (Comprobar que no exista una tabla con el mismo nombre)
+     */
+    boolean crearNuevaTabla(String nombreTabla,Columna[] c);
+    /**
+     * Elimina una tabla existente en la base de datos.
+     * @param nombreTabla
+     * @return 
+     * true: Si la tabla fue eliminada con éxito <br/>
+     * false: No se pudo eliminar la tabla (Si no existe una tabla con ese nombre, no puede ser eliminada)
+     */
     boolean eliminarTabla(String nombreTabla);
-    //Ejecuta una orden que le pasamos como parametro
+    /**
+     * Ejecutamos una sentencia en la base de datos.
+     * @param sentencia
+     * @throws SQLException 
+     */
     void ejecutarSentencia(String sentencia) throws SQLException;
-    //Ejecuta una consulta que le pasamos como paramentro y nos devuelve una Tabla
+    /**
+     * Ejecutamos una consulta a la base de datos (Consulta, se refiere a una instrucción que devuelve valores).
+     * @param consulta
+     * @return @see {@link LuSQL.logica.Interfaces.Tabla}
+     */
     Tabla ejecutarConsulta(String consulta);
-    //Nos devuelve el objecto servidor
+    /**
+     * Obtenemos el objecto servidor al que esta conectado la base de datos.
+     * @return 
+     * @see {@link LuSQL.logica.ServidorSQL} <br/>
+     * null: Si no se pudo obtener datos de la tabla
+     */
     ServidorSQL getServidor();
     
 }
