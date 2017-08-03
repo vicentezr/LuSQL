@@ -111,3 +111,10 @@ MODIFICACIONES: Completada parte lógica de conexión y acceso.
 - Añadidos nuevas propiedades en la clase "LuSQL.logica.Columna"
 
 Nota: Testeada la conexión y el funcionamiento de todos los métodos para un servidor SQL_Server_Windows, falta testear con el resto de servidores y detectar posibles errores.
+
+*****
+NÚMERO: 8
+FECHA: 31/07/2017
+MODIFICACIONES: Modificación en sistema de comandos e interfaz gráfica.
+
+- Adicción de funciones para comandos.
